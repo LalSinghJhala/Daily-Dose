@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Solution {
+public:
+    long long maxMatrixSum(vector<vector<int>>& matrix) {
+        long long ans = 0 ;
+        int cntNeg = 0;
+        int minvalue = INT_MAX;
+        for(int i = 0; i < matrix.size(); i++) {
+            for(int j = 0; j < matrix[i].size(); j++) {
+                if(matrix[i][j] < 0) {
+                    cntNeg++;
+                }
+                minvalue = min(minvalue , abs(matrix[i][j]));
+                ans +=  abs(matrix[i][j]);
+            }
+        }
+        if(cntNeg%2 == 0){
+            return ans;
+        }
+        else {
+           return  ans -(2LL* minvalue);
+        }
+
+        return ans;
+    }
+
+};
